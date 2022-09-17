@@ -8,6 +8,6 @@
 import Foundation
 
 class UserManager: ObservableObject {
-    @Published var isRegister = false
-    var name = ""
+    @Published var isRegister = UserDefaults.standard.bool(forKey: "isRegister")
+    var name = UserDefaults.standard.string(forKey: "username")
 }

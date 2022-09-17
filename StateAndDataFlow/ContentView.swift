@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Hi, \(user.name)")
+            Text("Hi, \(user.name ?? "")")
                 .font(.largeTitle)
                 .padding(.top, 100)
             Text(timer.counter.formatted())
@@ -21,11 +21,8 @@ struct ContentView: View {
                 .padding(.top, 100)
 
             Spacer()
-            
             StartButtonView(timer: timer)
-            
             Spacer()
-            
             LogOutButtonView()
         }
     }
@@ -72,6 +69,7 @@ struct LogOutButtonView: View {
     }
     
     private func logoutUser() {
+        UserDefaults.standard.set(false, forKey: "isRegister")
         user.isRegister.toggle()
     }
 }
